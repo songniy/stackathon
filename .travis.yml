@@ -18,5 +18,10 @@ script:
   - npm test
   - npm run build-client
 deploy:
+  skip_cleanup: true
+  provider: heroku
+  app: rescuerangers-1
+  on:
+    branch: master
   api_key:
     secure: hJBr0dM+HBesgfsK0GZ+U8vBT6PvWtRvQxTw0eFe6Oodssotj+qFYG/zY06uC47k1UCEP3DeFAjY69cMuEq0nlPvC4XjbvyLAqB9ceYhH8fxBxrbOrMccwKi6Xmg4jA2ptwxQJQQRkD+YmpO35VY40LT5QZZAJ3QMKU3uGP43zoMYgk3yos6NvdQWt97mcJQiD6GUtpZ2+aujB3YwHI+tBbqzLTNncylD2eCufM+4j2NRyLaRyTkUypH58x9t4BIYm1pMfZNNUrGoZ/+9mu3Kb5O828bR+EXvAF2ijecV4v/e6j7kmBnaafP989xnPGosQBZL9TiTMPEpEJD0uqh9JRn+qCxNGnrHF08AC2SQTFTl6+v06apR8EDNeG2ChH/DMwqLg5d26Xpu+ykbpzuu+rtcGlsUZ+JuDHH4v9DzBSJYoSpqq7F8A591G6c59CkA/oY3OSsFkhyg9tBisw+q9b11GEaOmGbzbOHBIkPtI1Pe2eBfi/9sM1l3wagIv94DQOkzgE+6A2CqnK7VifLR4cNtMJRJ6ySt9K6/lYXfFWHOIkFTqmxZcLWnk01F2Nduu2Ur6MkA60VIAT4jUImO93f4hPyiqb55JTbMwPGbo+1QOUQ3/98kWZFdIPH7JpVt73QZtDiEDC290PPdRx2wqPs1OGbeLRNt+kQF/CBlxs=
