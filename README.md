@@ -1,4 +1,4 @@
-# Boilermaker
+# Stackathon
 
 _Good things come in pairs_
 
