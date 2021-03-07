@@ -426,28 +426,28 @@ define("./workbox-28e8e7a1.js",['exports'], function (exports) { 'use strict';
       const type = typeof object[expectedMethod];
 
       if (type !== 'function') {
-        details.expectedMethod = expectedMethod;
+        details['expectedMethod'] = expectedMethod;
         throw new WorkboxError('missing-a-method', details);
       }
     };
 
     const isType = (object, expectedType, details) => {
       if (typeof object !== expectedType) {
-        details.expectedType = expectedType;
+        details['expectedType'] = expectedType;
         throw new WorkboxError('incorrect-type', details);
       }
     };
 
     const isInstance = (object, expectedClass, details) => {
       if (!(object instanceof expectedClass)) {
-        details.expectedClass = expectedClass;
+        details['expectedClass'] = expectedClass;
         throw new WorkboxError('incorrect-class', details);
       }
     };
 
     const isOneOf = (value, validValues, details) => {
       if (!validValues.includes(value)) {
-        details.validValueDescription = `Valid values are ${JSON.stringify(validValues)}.`;
+        details['validValueDescription'] = `Valid values are ${JSON.stringify(validValues)}.`;
         throw new WorkboxError('invalid-value', details);
       }
     };
@@ -1761,7 +1761,7 @@ define("./workbox-28e8e7a1.js",['exports'], function (exports) { 'use strict';
         }
       }
 
-      
+      return;
     }
 
     /*
@@ -2709,7 +2709,7 @@ define("./workbox-28e8e7a1.js",['exports'], function (exports) { 'use strict';
       constructor(options = {}) {
         options.cacheName = cacheNames.getPrecacheName(options.cacheName);
         super(options);
-        this._fallbackToNetwork = options.fallbackToNetwork !== false; // Redirected responses cannot be used to satisfy a navigation request, so
+        this._fallbackToNetwork = options.fallbackToNetwork === false ? false : true; // Redirected responses cannot be used to satisfy a navigation request, so
         // any redirected response must be "copied" rather than cloned, so the new
         // response doesn't contain the `redirected` flag. See:
         // https://bugs.chromium.org/p/chromium/issues/detail?id=669363&desc=2#c1
@@ -3356,7 +3356,7 @@ define("./workbox-28e8e7a1.js",['exports'], function (exports) { 'use strict';
             logger.debug(`Precaching did not find a match for ` + getFriendlyURL(request.url));
           }
 
-          
+          return;
         };
 
         super(match, precacheController.strategy);
