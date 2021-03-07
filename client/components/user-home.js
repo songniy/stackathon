@@ -2,6 +2,17 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 
+const coffees = [
+  {name: 'Perspiciatis', image: 'images/1.jpg'},
+  {name: 'Voluptatem', image: 'images/2.jpg'},
+  {name: 'Explicabo', image: 'images/3.jpg'},
+  {name: 'Rchitecto', image: 'images/4.jpg'},
+  {name: ' Beatae', image: 'images/5.jpg'},
+  {name: ' Vitae', image: 'images/6.jpg'},
+  {name: 'Inventore', image: 'images/7.jpg'},
+  {name: 'Veritatis', image: 'images/8.jpg'},
+  {name: 'Accusantium', image: 'images/9.jpg'}
+]
 /**
  * COMPONENT
  */
@@ -10,7 +21,17 @@ export const UserHome = props => {
 
   return (
     <div>
-      <h3>Welcome, {email}</h3>
+      {coffees.map(({name, image}, index) => {
+        return (
+          <div key={index} className="card">
+            <img className="card--avatar" src={`${image}`} />
+            <h1 className="card--title">{name}</h1>
+            <a className="card--link" href="#">
+              Taste
+            </a>
+          </div>
+        )
+      })}
     </div>
   )
 }

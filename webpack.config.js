@@ -1,11 +1,13 @@
+const WorkboxPlugin = require('workbox-webpack-plugin')
 const isDev = process.env.NODE_ENV === 'development'
 
 module.exports = {
-  mode: isDev ? 'development' : 'production',
+  mode: 'development',
   entry: [
     '@babel/polyfill', // enables async-await
     './client/index.js'
   ],
+  plugins: [new WorkboxPlugin.GenerateSW()],
   output: {
     path: __dirname,
     filename: './public/bundle.js'
