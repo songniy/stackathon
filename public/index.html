@@ -17,15 +17,6 @@
     <link rel="apple-touch-icon" href="images/icons/icon-512x512.png" />
     <meta name="apple-mobile-web-app-status-bar" content="#db4938" />
     <meta name="theme-color" content="#db4938" />
-    <script>
-      // Check that service workers are supported
-      if ('serviceWorker' in navigator) {
-        // Use the window load event to keep the page load performant
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('../service-worker.js')
-        })
-      }
-    </script>
     <script defer src="/bundle.js"></script>
   </head>
   <body>
@@ -39,5 +30,16 @@
       </nav>
       <div id="app"></div>
     </main>
+    <script>
+      // Check that service workers are supported
+      if ('serviceWorker' in navigator) {
+        // Use the window load event to keep the page load performant
+        window.addEventListener('load', () => {
+          navigator.serviceWorker
+            .register('./service-worker.js')
+            .then((reg) => console.log('service worker registered', reg.scope))
+        })
+      }
+    </script>
   </body>
 </html>
