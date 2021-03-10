@@ -22,10 +22,32 @@ self.addEventListener('install', event => {
 self.addEventListener('fetch', event => {
   //respond with something when heard
   event.respondWith(
+    //match to all requests and then fetch them again.
+    //in this case it's for a weather app and thus we want to fetch
+    //the data again because we need new weather data
+    //if it cann't fetch, the data .catch, return page since that must mean there is
+    //no internet connection
     caches.match(event.request).then(() => {
       return fetch(event.request).catch(() => caches.match('offline.html'))
     })
   )
 })
 //activate the sw
-self.addEventListener('activate', event => {})
+self.addEventListener('activate', event => {
+  //could have a lot of versions of our cache.
+  //on activate remove all previous caches and cache the new one
+  const cacheWhitelist = []
+  cacheWhitelist.push(CACHE_NAME)
+  //this goes through and deletes all other caches except the CACHE_NAME
+  event.waitUntil(
+    caches.keys().then(cacheNames =>
+      Promise.all(
+        cacheNames.map(cacheName => {
+          if (!cacheWhitelist.includes(cacheName)) {
+            return caches.delete(cacheName)
+          }
+        })
+      )
+    )
+  )
+})
