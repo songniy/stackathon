@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width initial-scale=1.0" />
     <title>Rescue Rangers</title>
-    <link rel="stylesheet" href="/style.css" />
-    <link rel="manifest" href="/manifest.json" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="manifest" href="manifest.json" />
     <!-- ios support -->
     <link rel="apple-touch-icon" href="images/icons/icon-72x72.png" />
     <link rel="apple-touch-icon" href="images/icons/icon-96x96.png" />
@@ -31,13 +31,16 @@
       <div id="app"></div>
     </main>
     <script>
-      // Check that service workers are supported
       if ('serviceWorker' in navigator) {
-        // Use the window load event to keep the page load performant
         window.addEventListener('load', () => {
           navigator.serviceWorker
-            .register('./service-worker.js')
-            .then((reg) => console.log('service worker registered', reg.scope))
+            .register('../service-worker.js')
+            .then((registration) => {
+              console.log('SW registered: ', registration)
+            })
+            .catch((registrationError) => {
+              console.log('SW registration failed: ', registrationError)
+            })
         })
       }
     </script>

@@ -13,13 +13,13 @@
 
 // If the loader is already loaded, just stop.
 if (!self.define) {
-  const singleRequire = (name) => {
+  const singleRequire = name => {
     if (name !== 'require') {
       name = name + '.js'
     }
     let promise = Promise.resolve()
     if (!registry[name]) {
-      promise = new Promise(async (resolve) => {
+      promise = new Promise(async resolve => {
         if ('document' in self) {
           const script = document.createElement('script')
           script.src = name
@@ -40,13 +40,13 @@ if (!self.define) {
   }
 
   const require = (names, resolve) => {
-    Promise.all(names.map(singleRequire)).then((modules) =>
+    Promise.all(names.map(singleRequire)).then(modules =>
       resolve(modules.length === 1 ? modules[0] : modules)
     )
   }
 
   const registry = {
-    require: Promise.resolve(require),
+    require: Promise.resolve(require)
   }
 
   self.define = (moduleName, depsNames, factory) => {
@@ -57,10 +57,10 @@ if (!self.define) {
     registry[moduleName] = Promise.resolve().then(() => {
       let exports = {}
       const module = {
-        uri: location.origin + moduleName.slice(1),
+        uri: location.origin + moduleName.slice(1)
       }
       return Promise.all(
-        depsNames.map((depName) => {
+        depsNames.map(depName => {
           switch (depName) {
             case 'exports':
               return exports
@@ -70,7 +70,7 @@ if (!self.define) {
               return singleRequire(depName)
           }
         })
-      ).then((deps) => {
+      ).then(deps => {
         const facValue = factory(...deps)
         if (!exports.default) {
           exports.default = facValue
@@ -80,7 +80,7 @@ if (!self.define) {
     })
   }
 }
-define('./service-worker.js', ['./workbox-28e8e7a1'], function (workbox) {
+define('./service-worker.js', ['./workbox-a36e19f9'], function(workbox) {
   'use strict'
 
   /**
@@ -95,11 +95,8 @@ define('./service-worker.js', ['./workbox-28e8e7a1'], function (workbox) {
    * See https://goo.gl/2aRDsh
    */
 
-  self.addEventListener('message', (event) => {
-    if (event.data && event.data.type === 'SKIP_WAITING') {
-      self.skipWaiting()
-    }
-  })
+  self.skipWaiting()
+  workbox.clientsClaim()
   /**
    * The precacheAndRoute() method efficiently caches and responds to
    * requests for URLs in the manifest.
@@ -110,8 +107,12 @@ define('./service-worker.js', ['./workbox-28e8e7a1'], function (workbox) {
     [
       {
         url: './public/bundle.js',
-        revision: '5dd0c8496cd3d6aa53e8e9a98afaff1f',
+        revision: '0a993be6b50d4e298e7773a8e9286de7'
       },
+      {
+        url: 'index.html',
+        revision: '85c7f078241fb24de092e17cc116fdee'
+      }
     ],
     {}
   )

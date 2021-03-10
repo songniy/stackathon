@@ -1,11 +1,12 @@
 {
   "name": "Rescue Rangers",
-  "short_name": "Rescue",
+  "short_name": "RR",
   "start_url": "index.html",
   "display": "standalone",
   "background_color": "#fdfdfd",
   "theme_color": "#db4938",
   "orientation": "portrait-primary",
+  "prefer_related_applications": false,
   "icons": [
     {
       "src": "/images/icons/icon-72x72.png",

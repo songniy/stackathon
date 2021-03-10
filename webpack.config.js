@@ -1,3 +1,5 @@
+const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const WorkboxPlugin = require('workbox-webpack-plugin')
 const isDev = process.env.NODE_ENV === 'development'
 
@@ -7,7 +9,17 @@ module.exports = {
     '@babel/polyfill', // enables async-await
     './client/index.js'
   ],
-  plugins: [new WorkboxPlugin.GenerateSW()],
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'PWA - Rescue Rangers'
+    }),
+    new WorkboxPlugin.GenerateSW({
+      maximumFileSizeToCacheInBytes: 5000000,
+      swDest: '/public/service-worker.js',
+      clientsClaim: true,
+      skipWaiting: true
+    })
+  ],
   output: {
     path: __dirname,
     filename: './public/bundle.js'
