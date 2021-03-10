@@ -1,17 +1,19 @@
 import replace from '@rollup/plugin-replace'
 
 export default {
-  input: 'src/index.js',
+  mode: 'development',
+  input: 'client/index.js',
   output: {
     dir: 'output',
-    format: 'cjs',
+    format: 'cjs'
   },
   plugins: [
     replace({
       preventAssignment: true,
-      'process.env.NODE_ENV': JSON.stringify('production'),
-      __buildDate__: () => JSON.stringify(new Date()),
-      __buildVersion: 15,
-    }),
-  ],
+      values: {
+        'process.browser': true,
+        'process.env.NODE_ENV': JSON.stringify(mode)
+      }
+    })
+  ]
 }
