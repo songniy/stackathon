@@ -15,106 +15,101 @@
 if (!self.define) {
   const singleRequire = name => {
     if (name !== 'require') {
-      name = name + '.js'
+      name = name + '.js';
     }
-    let promise = Promise.resolve()
+    let promise = Promise.resolve();
     if (!registry[name]) {
-      promise = new Promise(async resolve => {
-        if ('document' in self) {
-          const script = document.createElement('script')
-          script.src = name
-          document.head.appendChild(script)
-          script.onload = resolve
-        } else {
-          importScripts(name)
-          resolve()
-        }
-      })
+      
+        promise = new Promise(async resolve => {
+          if ("document" in self) {
+            const script = document.createElement("script");
+            script.src = name;
+            document.head.appendChild(script);
+            script.onload = resolve;
+          } else {
+            importScripts(name);
+            resolve();
+          }
+        });
+      
     }
     return promise.then(() => {
       if (!registry[name]) {
-        throw new Error(`Module ${name} didn’t register its module`)
+        throw new Error(`Module ${name} didn’t register its module`);
       }
-      return registry[name]
-    })
-  }
+      return registry[name];
+    });
+  };
 
   const require = (names, resolve) => {
-    Promise.all(names.map(singleRequire)).then(modules =>
-      resolve(modules.length === 1 ? modules[0] : modules)
-    )
-  }
-
+    Promise.all(names.map(singleRequire))
+      .then(modules => resolve(modules.length === 1 ? modules[0] : modules));
+  };
+  
   const registry = {
     require: Promise.resolve(require)
-  }
+  };
 
   self.define = (moduleName, depsNames, factory) => {
     if (registry[moduleName]) {
       // Module is already loading or loaded.
-      return
+      return;
     }
     registry[moduleName] = Promise.resolve().then(() => {
-      let exports = {}
+      let exports = {};
       const module = {
         uri: location.origin + moduleName.slice(1)
-      }
+      };
       return Promise.all(
         depsNames.map(depName => {
-          switch (depName) {
-            case 'exports':
-              return exports
-            case 'module':
-              return module
+          switch(depName) {
+            case "exports":
+              return exports;
+            case "module":
+              return module;
             default:
-              return singleRequire(depName)
+              return singleRequire(depName);
           }
         })
       ).then(deps => {
-        const facValue = factory(...deps)
-        if (!exports.default) {
-          exports.default = facValue
+        const facValue = factory(...deps);
+        if(!exports.default) {
+          exports.default = facValue;
         }
-        return exports
-      })
-    })
-  }
+        return exports;
+      });
+    });
+  };
 }
-define('./service-worker.js', ['./workbox-a36e19f9'], function(workbox) {
-  'use strict'
+define("./service-worker.js",['./workbox-a36e19f9'], function (workbox) { 'use strict';
 
   /**
-   * Welcome to your Workbox-powered service worker!
-   *
-   * You'll need to register this file in your web app.
-   * See https://goo.gl/nhQhGp
-   *
-   * The rest of the code is auto-generated. Please don't update this file
-   * directly; instead, make changes to your Workbox build configuration
-   * and re-run your build process.
-   * See https://goo.gl/2aRDsh
-   */
+  * Welcome to your Workbox-powered service worker!
+  *
+  * You'll need to register this file in your web app.
+  * See https://goo.gl/nhQhGp
+  *
+  * The rest of the code is auto-generated. Please don't update this file
+  * directly; instead, make changes to your Workbox build configuration
+  * and re-run your build process.
+  * See https://goo.gl/2aRDsh
+  */
 
-  self.skipWaiting()
-  workbox.clientsClaim()
+  self.skipWaiting();
+  workbox.clientsClaim();
   /**
    * The precacheAndRoute() method efficiently caches and responds to
    * requests for URLs in the manifest.
    * See https://goo.gl/S9QRab
    */
 
-  workbox.precacheAndRoute(
-    [
-      {
-        url: './public/bundle.js',
-        revision: '0a993be6b50d4e298e7773a8e9286de7'
-      },
-      {
-        url: 'index.html',
-        revision: '85c7f078241fb24de092e17cc116fdee'
-      }
-    ],
-    {}
-  )
-})
+  workbox.precacheAndRoute([{
+    "url": "./public/bundle.js",
+    "revision": "0a993be6b50d4e298e7773a8e9286de7"
+  }, {
+    "url": "index.html",
+    "revision": "85c7f078241fb24de092e17cc116fdee"
+  }], {});
+
+});
 //# sourceMappingURL=service-worker.js.map
