@@ -1,6 +1,6 @@
 {
-  "name": "Rescue Rangers",
-  "short_name": "RR",
+  "name": "Rescue Rangers PWA",
+  "short_name": "Rescue Rangers",
   "start_url": "index.html",
   "display": "standalone",
   "background_color": "#fdfdfd",
