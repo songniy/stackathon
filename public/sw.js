@@ -12,7 +12,6 @@ self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME).then(cache => {
       console.log('Opened cache')
-
       return cache.addAll(urlsToCache)
     })
   )
@@ -36,6 +35,9 @@ self.addEventListener('fetch', event => {
 self.addEventListener('activate', event => {
   //could have a lot of versions of our cache.
   //on activate remove all previous caches and cache the new one
+  //this fires when the old service worker is gone and the new serviceworker
+  //can take control
+  // This is the ideal time to do stuff that you couldn't do while the old worker was still in use, such as migrating databases and clearing caches.
   const cacheWhitelist = []
   cacheWhitelist.push(CACHE_NAME)
   //this goes through and deletes all other caches except the CACHE_NAME

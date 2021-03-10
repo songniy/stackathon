@@ -38,6 +38,13 @@
             .register('./sw.js')
             .then((registration) => {
               console.log('SW registered: ', registration)
+              function update() {
+                //update the registration every
+                console.log('registration updating')
+                registration.update()
+                return null
+              }
+              setInterval(update(), 3600000)
             })
             .catch((registrationError) => {
               console.log('SW registration failed: ', registrationError)
