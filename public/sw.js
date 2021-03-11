@@ -2,7 +2,7 @@
 //simply take from the cache
 const CACHE_NAME = 'version-1'
 //offline.html is document that we want to show when we have no internet connection
-const urlsToCache = ['index.html', 'offline.html'] //add offline.html to this later. will receive error trying to cache something that does not exist
+const urlsToCache = ['index.html', 'offline.html', 'bundle.js', 'bundle.js.map'] //add offline.html to this later. will receive error trying to cache something that does not exist
 const self = this
 //events for 3 things
 //installation of sw
