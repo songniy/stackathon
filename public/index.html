@@ -19,6 +19,10 @@
     <meta name="apple-mobile-web-app-status-bar" content="#db4938" />
     <meta name="theme-color" content="#db4938" />
     <script defer src="/bundle.js"></script>
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/@pwabuilder/pwainstall"
+    ></script>
   </head>
   <body>
     <main>
@@ -38,6 +42,7 @@
             .register('./sw.js')
             .then((registration) => {
               console.log('SW registered: ', registration)
+              //create update interval
               function update() {
                 //update the registration every
                 console.log('registration updating')

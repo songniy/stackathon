@@ -7,6 +7,7 @@
   "theme_color": "#db4938",
   "orientation": "portrait-primary",
   "prefer_related_applications": false,
+  "description": "some description to be typed out in the future",
   "icons": [
     {
       "src": "/images/icons/icon-72x72.png",
