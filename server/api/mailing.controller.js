@@ -10,7 +10,7 @@ mailingController.post('/', (req, res, next) => {
   try {
     //req.query should be an object with {email,template}
     //email could come from database.
-    Mailing.sendEmail(req.query)
+    //Mailing.sendEmail(req.query)
     res.status(200).json({message: 'email sent successfully'})
   } catch (e) {
     next(console.log('something went wrong res,event', res, 500, e))
