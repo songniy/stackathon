@@ -2,7 +2,7 @@ const nodemailer = require('nodemailer')
 const {google} = require('googleapis')
 const {OAuth2} = google.auth
 const ejs = require('ejs')
-const OAUTH_PLAYGROUND = 'https://developers.google.com/oauthplayground'
+const OAUTH_PLAYGROUND = process.env.OAUTH_PLAYGROUND
 
 const {
   GOOGLE_CLIENT_ID,
@@ -15,13 +15,6 @@ const MAILING_SERVICE_CLIENT_ID = GOOGLE_CLIENT_ID
 const MAILING_SERVICE_CLIENT_SECRET = GOOGLE_CLIENT_SECRET
 const MAILING_SERVICE_REFRESH_TOKEN = GOOGLE_NO_REPLY_REFRESH_TOKEN
 const SENDER_EMAIL_ADDRESS = GOOGLE_NO_REPLY_EMAIL
-
-console.log(
-  MAILING_SERVICE_CLIENT_ID,
-  MAILING_SERVICE_CLIENT_SECRET,
-  MAILING_SERVICE_REFRESH_TOKEN,
-  SENDER_EMAIL_ADDRESS
-)
 
 const Mailing = {}
 const oauth2Client = new OAuth2(
