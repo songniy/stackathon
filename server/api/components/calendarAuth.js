@@ -1,8 +1,9 @@
 const express = require('express')
 const {google} = require('googleapis')
-
-const privateKey = require('../../../calendarPrivateKey.json')
-
+const privateKey = {
+  client_email: process.env.PRIVATEKEY_CLIENT_EMAIL,
+  private_key: process.env.PRIVATEKEY_PRIVATE_KEY
+}
 //configure jwt client
 
 function CalendarAuth() {
