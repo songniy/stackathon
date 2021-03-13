@@ -1,14 +1,13 @@
 const express = require('express')
 const {google} = require('googleapis')
 
-let privateKey_Private_Key = ''
-if (process.env.PGHOST === 'localhost') {
-  privateKey_Private_Key = process.env.PRIVATEKEY_PRIVATE_KEY
-} else {
+let privateKey_Private_Key = process.env.PRIVATEKEY_PRIVATE_KEY
+if (!process.env.PGHOST === 'localhost') {
   privateKey_Private_Key = process.env.PRIVATEKEY_PRIVATE_KEY.replace(
     /\\n/g,
     '\n'
-  ).replace(/'/g, '')
+  )
+  privateKey_Private_Key = privateKey_Private_Key.replace(/'/g, '')
 }
 const privateKey = {
   client_email: process.env.PRIVATEKEY_CLIENT_EMAIL,
