@@ -21,10 +21,19 @@ module.exports = router
 if (!process.env.GOOGLE_CLIENT_ID || !process.env.GOOGLE_CLIENT_SECRET) {
   console.log('Google client ID / secret not found. Skipping Google OAuth.')
 } else {
+  //if localhost, set the callbackURL to http:localhost else set it to use
+  //https
+  let callbackURL
+  if (process.env.PGHOST === 'localhost') {
+    callbackURL = '/auth/google/callback'
+  } else {
+    callbackRUL = 'https://rescuerangers-1.herokuapp.com/auth/google/callback'
+  }
   const googleConfig = {
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: '/auth/google/callback'
+    callbackURL: callbackURL,
+    proxy: true
   }
 
   const strategy = new GoogleStrategy(
