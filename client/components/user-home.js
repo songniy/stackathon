@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-
+import {Calendar} from './Calendar'
 const coffees = [
   {name: 'Perspiciatis', image: 'images/1.jpg'},
   {name: 'Voluptatem', image: 'images/2.jpg'},

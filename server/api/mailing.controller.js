@@ -11,7 +11,9 @@ mailingController.post('/', (req, res, next) => {
     //req.query should be an object with {email,template}
     //email could come from database.
     //How to test the route: http://localhost:8080/api/mailing?email=songniy@gmail.com&template=subscribe
-    Mailing.sendEmail(req.query)
+    const data = {email: req.query.email, template: req.query.template}
+    //above for security reasons
+    Mailing.sendEmail(data)
     res.status(200).json({message: 'email sent successfully'})
   } catch (e) {
     next(console.log('something went wrong res,event', res, 500, e))
