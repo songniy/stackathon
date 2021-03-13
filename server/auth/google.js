@@ -25,9 +25,9 @@ if (!process.env.GOOGLE_CLIENT_ID || !process.env.GOOGLE_CLIENT_SECRET) {
   //https
   let callbackURL
   if (process.env.PGHOST === 'localhost') {
-    callbackURL = '/auth/google/callback'
+    callbackURL = 'http://localhost:8080/auth/google/callback'
   } else {
-    callbackRUL = 'https://rescuerangers-1.herokuapp.com/auth/google/callback'
+    callbackURL = 'https://rescuerangers-1.herokuapp.com/auth/google/callback'
   }
   const googleConfig = {
     clientID: process.env.GOOGLE_CLIENT_ID,
