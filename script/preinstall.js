@@ -1,6 +1,6 @@
 const fs = require('fs')
 fs.writeFile(
-  process.env.GOOGLE_APPLICATION_CREDENTIALS,
+  '../GOOGLE_APPLICATION_CREDENTIALS.json',
   process.env.GOOGLE_CONFIG,
-  err => {}
+  (err) => {}
 )
