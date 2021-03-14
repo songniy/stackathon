@@ -5,8 +5,8 @@ if (process.env.PGHOST === 'localhost') {
   privateKey = require('../../../GOOGLE_APPLICATION_CREDENTIALS.json')
 } else {
   privateKey = process.env.GOOGLE_APPLICATION_CREDENTIALS
+  console.log('privateKey pre-corr', privateKey)
   if (privateKey.private_key) {
-    console.log('privateKey pre-corr', privateKey)
     privateKey.private_key.replace(/\\n/g, "\n' + '")
     console.log('privateKey post-corr', privateKey)
   }

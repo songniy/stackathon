@@ -1,8 +1,8 @@
 language: node_js
 node_js:
-  - 14
+- 14
 services:
-  - postgresql
+- postgresql
 addons:
   postgresql: '10'
 dist: xenial
@@ -11,12 +11,12 @@ notifications:
     on_success: change
     on_failure: always
 install:
-  - npm ci
+- npm ci
 before_script:
-  - psql -c 'create database "stackathon-test";' -U postgres
+- psql -c 'create database "stackathon-test";' -U postgres
 script:
-  - npm test
-  - npm run build-client
+- npm test
+- npm run build-client
 deploy:
   skip_cleanup: true
   provider: heroku
@@ -25,3 +25,6 @@ deploy:
     branch: master
   api_key:
     secure: 0TVcK5WPlzo6qFt8cdZ0YRyngIuBFnhBUSdFSgLiCt8RFJlykpE7SkyytY5kIJ9f0aKMWVS9CTA628CDNhWbv5wKTZ/CG1C+ERXhewPXeEX98CtGkuhJM3k0dO2YnTyDinSnkkuntIR2Ql3OrQwPHlOAPp1csLKpsyS4ILQf9PnYyv1EXki3Q7iOjqiY1UA4bK73++NH2prcqTcwv3qaVMH2WXA+WdHsxw+GrCxaSaRh39g3+gLYpsEUfObf1GvAXDXLyZexoDPRaJFHhdrkM1A+T6/kbvOIl5cwIOu6Yit4bihVNOWd60WMXy1BFvZgk4b4A99/yzDQcA8nPGcxIXtWQK+MFbA9CsjsNksnLc2PCJsITy33h131fNn0gMtjBhAlTD9tG4GfSWCk8hnIsT5V4UpzzAEmtWSlNqBt/L9bqnFlwdTtoG7JCAb4Ol+QJRTmOuaZjhVlVkmy4A9RllplX8JzNPub6wb9QtqodIv8xeAGvqQ/TWWY2CSi1YhJe9PLGe4eGKBiKTf3IYMPSjxhJvEcia4Sh25ekXKwHT1lJt9q3yJL3Ux4gdByEPdZXz9kqqHPQpAnG0bcbQT9baqoTBUDNlH3INTXTYpTqvL492UUhyMwP8unx2tS1mJFsudyJQmTCtBuN51oEGntPZs/AnSbpbvscDoDzG9hLO8=
+env:
+  global:
+    secure: TgRqZszkLGOSKU/FTyK8uCkhiWRQNlTJzW2KDu/o3XF6MS07nkPW9ue/kukNoWN4iNhm/MoD9O/aKCt4Y3XYYo/nj01XsBSFBOreP6az/kDZjtp78Cek68aCwpmqHpdJ1vOboz8bs+5LmcQn+COjSx2TDIpmItgjdH07TiXlhcx3ceUE9tePDn0Qw9kMiOkYvs/xYvHb5IcGU3oltMGaS2dzSlamXam3whuUPjaQK/ze0lVEOAoG3UOEjm6TOaMA4waP/wTUegrB6zWJtHdYXDUYDOtsfXnXuYCcc+d+GA5qfyBXAmFpVIEMpMCPIYRvz8ajS+RqUlGWe1WQPSyan24UbEkPbNDjU1WP0f7gKrJCjYJ5iFZJ4Px1ax7eSxSgo/KmYGTbQHrVLKjmgDtBiGljMl6ry5MgmsS0ouzFHSlrOGQk5R34SCvQk8s7UZrz4CPkYo5itjdUH+OnuEWFHeGPEUQqAzJMLV+xos2/vvb4BCt1x85YWg4Jp7gv3+DyHbl5Zgf7e4idhSlaKSztAAGh6xH/TQooWXYBuyoSte+8tgbO8a6GSIiuIK0l6TeMdE721misftZK1ftLNydHAiH5+5nRsVlk9WpuqrSV/T0WtvCclcUnKPBYambS9QrdCwth+nrdV+Z8kQzsfBsXLpZqcBA/JXiVlzkJIE66/0o=
