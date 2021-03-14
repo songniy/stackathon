@@ -6,8 +6,9 @@ if (process.env.PGHOST === 'localhost') {
 } else {
   privateKey = process.env.GOOGLE_APPLICATION_CREDENTIALS
   if (privateKey) {
-    console.log('privateKey', privateKey)
+    console.log('privateKey pre-corr', privateKey)
     privateKey.private_key.replace(/\\n/g, "\n' + '")
+    console.log('privateKey post-corr', privateKey)
   }
 }
 
