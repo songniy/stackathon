@@ -6,4 +6,4 @@ secrets.js
 npm-debug.log
 yarn-error.log
 rollup.config.js
-google-credentials-heroku.json
+GOOGLE_APPLICATION_CREDENTIALS.json

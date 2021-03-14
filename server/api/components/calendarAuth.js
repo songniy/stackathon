@@ -1,6 +1,12 @@
 const express = require('express')
 const {google} = require('googleapis')
-const privateKey = require('../../../google-credentials-heroku.json')
+let privateKey
+if (process.env.PGHOST === 'localhost') {
+  privateKey = require('../../../GOOGLE_APPLICATION_CREDENTIALS.json')
+} else {
+  privateKey = process.env.GOOGLE_APPLICATION_CREDENTIALS
+}
+
 let privateKey_Private_Key = process.env.PRIVATEKEY_PRIVATE_KEY
 
 // const privateKey = {
