@@ -6,6 +6,7 @@ if (process.env.PGHOST === 'localhost') {
 } else {
   privateKey = process.env.GOOGLE_APPLICATION_CREDENTIALS
   if (privateKey) {
+    console.log('privateKey', privateKey)
     privateKey.private_key.replace(/\\n/g, "\n' + '")
   }
 }
@@ -17,7 +18,7 @@ if (process.env.PGHOST === 'localhost') {
 // //configure jwt client
 
 function CalendarAuth() {
-  console.log('privateKey process.env', privateKey, process.env)
+  console.log(' process.env', process.env)
   if (process.env.PGHOST === 'localhost') {
     let jwtClient = new google.auth.JWT(
       privateKey.client_email,
