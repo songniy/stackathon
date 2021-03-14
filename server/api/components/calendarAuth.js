@@ -19,24 +19,23 @@ if (process.env.PGHOST === 'localhost') {
 
 function CalendarAuth() {
   console.log(' process.env', process.env)
-  if (process.env.PGHOST === 'localhost') {
-    let jwtClient = new google.auth.JWT(
-      privateKey.client_email,
-      null,
-      privateKey.private_key,
-      ['https://www.googleapis.com/auth/calendar']
-    )
 
-    //authenticate request
-    jwtClient.authorize((err, tokens) => {
-      if (err) {
-        console.log(err)
-      } else {
-        console.log('Successfully connected!')
-      }
-    })
-    return jwtClient
-  }
+  let jwtClient = new google.auth.JWT(
+    privateKey.client_email,
+    null,
+    privateKey.private_key,
+    ['https://www.googleapis.com/auth/calendar']
+  )
+
+  //authenticate request
+  jwtClient.authorize((err, tokens) => {
+    if (err) {
+      console.log(err)
+    } else {
+      console.log('Successfully connected!')
+    }
+  })
+  return jwtClient
 }
 
 module.exports = CalendarAuth
