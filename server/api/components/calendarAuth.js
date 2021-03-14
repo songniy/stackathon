@@ -27,7 +27,7 @@ function CalendarAuth() {
   if (process.env.PGHOST === 'localhost') {
   }
   jwtClient = new google.auth.JWT(privateKey.client_email, null, private_key, [
-    'https://www.googleapis.com/auth/calendar',
+    'https://www.googleapis.com/auth/calendar'
   ])
 
   //authenticate request

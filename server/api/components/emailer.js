@@ -8,7 +8,7 @@ const {
   GOOGLE_CLIENT_ID,
   GOOGLE_CLIENT_SECRET,
   GOOGLE_NO_REPLY_REFRESH_TOKEN,
-  GOOGLE_NO_REPLY_EMAIL,
+  GOOGLE_NO_REPLY_EMAIL
 } = process.env
 
 const MAILING_SERVICE_CLIENT_ID = GOOGLE_CLIENT_ID
@@ -26,24 +26,24 @@ const oauth2Client = new OAuth2(
 const TEMPLATES = {
   applicationApproved: {
     fileName: 'applicationApproved.ejs',
-    subject: 'Your Adoption Application Has Been Approved!',
+    subject: 'Your Adoption Application Has Been Approved!'
   },
   applicationSubmitted: {
     fileName: 'applicationSubmitted.ejs',
-    subject: 'Your Adoption Application Has Been Submitted',
+    subject: 'Your Adoption Application Has Been Submitted'
   },
   scheduleReference: {
     fileName: 'scheduleReference.ejs',
-    subject: 'Contacting References On Your Adoption Application',
-  },
+    subject: 'Contacting References On Your Adoption Application'
+  }
 }
 
 /**
  * Send Email
  */
-Mailing.sendEmail = (data) => {
+Mailing.sendEmail = data => {
   oauth2Client.setCredentials({
-    refresh_token: MAILING_SERVICE_REFRESH_TOKEN,
+    refresh_token: MAILING_SERVICE_REFRESH_TOKEN
   })
   const accessToken = oauth2Client.getAccessToken()
   const smtpTransport = nodemailer.createTransport({
@@ -54,8 +54,8 @@ Mailing.sendEmail = (data) => {
       clientId: MAILING_SERVICE_CLIENT_ID,
       clientSecret: MAILING_SERVICE_CLIENT_SECRET,
       refreshToken: MAILING_SERVICE_REFRESH_TOKEN,
-      accessToken,
-    },
+      accessToken
+    }
   })
   const filePath = `./components/template/${TEMPLATES[data.template].fileName}`
   ejs.renderFile(filePath, data, {}, (e, content) => {
@@ -64,7 +64,7 @@ Mailing.sendEmail = (data) => {
       from: 'SENDER_EMAIL_ADDRESS',
       to: data.email,
       subject: TEMPLATES[data.template].subject,
-      html: content,
+      html: content
     }
     smtpTransport.sendMail(mailOptions, (err, info) => {
       if (err) return err
