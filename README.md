@@ -4,9 +4,9 @@ Looking to mix up a backend with `express`/`sequelize` and a frontend with
 `react`/`redux`? Set up to deploy to trais ci and Heroku. PWA-webpack enabled
 
 Service worker is added using webpack.
+1
 
 ## Setup
-
 
 ```
 ### OAuth
