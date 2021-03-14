@@ -19,13 +19,14 @@ function CalendarAuth() {
   }
 
   console.log(' process.env', process.env)
-  privateKey.private_key.replace(/\\n/g, "\n' + '")
+  let private_key = privateKey.private_key
+  private_key.replace(/\\n/g, "\n' + '")
   console.log('privateKey post-corr', privateKey)
 
   let jwtClient = new google.auth.JWT(
     privateKey.client_email,
     null,
-    privateKey.private_key,
+    private_key,
     ['https://www.googleapis.com/auth/calendar']
   )
 
