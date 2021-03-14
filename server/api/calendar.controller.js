@@ -7,9 +7,9 @@ calendarController.get('/events/:num', async (req, res, next) => {
   try {
     if (typeof parseInt(req.params.num) === 'number') {
       const auth = await calendarAuth()
-      console.log('AUTH', auth)
+      console.log('AUTH')
       const {data} = await getAllCalendarEvents(parseInt(req.params.num), auth)
-      console.log('calendar get data', data)
+      console.log('calendar get data')
       res.json(data)
     }
   } catch (err) {
