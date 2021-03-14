@@ -57,7 +57,7 @@ Mailing.sendEmail = data => {
       accessToken
     }
   })
-  const filePath = `./components/template/${TEMPLATES[data.template].fileName}`
+  const filePath = `./server/api/components/template/${TEMPLATES[data.template].fileName}`
   ejs.renderFile(filePath, data, {}, (e, content) => {
     if (e) return e
     const mailOptions = {
