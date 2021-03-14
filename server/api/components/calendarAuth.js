@@ -7,7 +7,8 @@ if (!process.env.PGHOST === 'localhost') {
     /\\n/g,
     '\n'
   )
-  privateKey_Private_Key = privateKey_Private_Key.replace(/'/g, '')
+  privateKey_Private_Key.replace(/'/g, '')
+  console.log('modified private key', privateKey_Private_Key)
 }
 const privateKey = {
   client_email: process.env.PRIVATEKEY_CLIENT_EMAIL,
