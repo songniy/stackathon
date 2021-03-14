@@ -1,16 +1,5 @@
 const express = require('express')
 const {google} = require('googleapis')
-let privateKey
-if (process.env.PGHOST === 'localhost') {
-  privateKey = require('../../../GOOGLE_APPLICATION_CREDENTIALS.json')
-} else {
-  privateKey = process.env.GOOGLE_APPLICATION_CREDENTIALS
-  console.log('privateKey pre-corr', privateKey)
-  // if (privateKey.private_key) {
-  privateKey.private_key.replace(/\\n/g, "\n' + '")
-  console.log('privateKey post-corr', privateKey)
-  //}
-}
 
 // const privateKey = {
 //   client_email: process.env.PRIVATEKEY_CLIENT_EMAIL,
@@ -19,7 +8,19 @@ if (process.env.PGHOST === 'localhost') {
 // //configure jwt client
 
 function CalendarAuth() {
+  let privateKey
+  if (process.env.PGHOST === 'localhost') {
+    privateKey = require('../../../GOOGLE_APPLICATION_CREDENTIALS.json')
+  } else {
+    privateKey = process.env.GOOGLE_APPLICATION_CREDENTIALS
+    console.log('privateKey pre-corr', privateKey)
+    // if (privateKey.private_key) {
+    //}
+  }
+
   console.log(' process.env', process.env)
+  privateKey.private_key.replace(/\\n/g, "\n' + '")
+  console.log('privateKey post-corr', privateKey)
 
   let jwtClient = new google.auth.JWT(
     privateKey.client_email,
