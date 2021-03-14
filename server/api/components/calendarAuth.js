@@ -18,17 +18,17 @@ function CalendarAuth() {
     //}
   }
 
-  //let private_key = privateKey.private_key
+  console.log(' process.env', process.env)
+  let private_key = privateKey.private_key
   console.log('private_key pre-corr', private_key)
   private_key.replace(/\\n/g, '\n" + "')
   console.log('private_key post-corr', private_key)
-
-  let jwtClient = new google.auth.JWT(
-    privateKey.client_email,
-    null,
-    privateKey.private_key,
-    ['https://www.googleapis.com/auth/calendar']
-  )
+  let jwtClient
+  if (process.env.PGHOST === 'localhost') {
+  }
+  jwtClient = new google.auth.JWT(privateKey.client_email, null, private_key, [
+    'https://www.googleapis.com/auth/calendar',
+  ])
 
   //authenticate request
   jwtClient.authorize((err, tokens) => {
