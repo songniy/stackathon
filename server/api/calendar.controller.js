@@ -13,7 +13,7 @@ calendarController.get('/events/:num', async (req, res, next) => {
       res.json(data)
     }
   } catch (err) {
-    next(console.log('something went wrong, auth,event', res, 500, err))
+    next(console.log('something went wrong, auth,event', 500, err))
   }
 })
 
