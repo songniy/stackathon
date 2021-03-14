@@ -1,6 +1,11 @@
 const {google} = require('googleapis')
 
-let calendar = google.calendar('v3')
+let calendar
+if (process.env.PGHOST === 'localhost') {
+  calendar = google.calendar('v3')
+} else {
+  calendar = google.calendar('v3')
+}
 
 async function getAllCalendarEvents(eventsNum, auth) {
   let events = await calendar.events.list({
