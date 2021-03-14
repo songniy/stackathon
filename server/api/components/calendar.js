@@ -18,7 +18,7 @@ async function getAllCalendarEvents(eventsNum, auth) {
   return events
 }
 
-async function addCalendarEvent(){
-  return
+async function addCalendarEvent() {
+  
 }
-module.exports = {getAllCalendarEvents,addCalendarEvent}
+module.exports = {getAllCalendarEvents, addCalendarEvent}

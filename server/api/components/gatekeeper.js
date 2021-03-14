@@ -11,7 +11,7 @@ function isAdminRole(req, res, next) {
 
 // isUser() --> Verify user is correct
 function isAdminUser(req, res, next) {
-  console.log('testing isAdmin--user',req.user)
+  console.log('testing isAdmin--user', req.user)
   if (req.user.email === 'rescueapp.no.reply@gmail.com') {
     return next()
   } else {
