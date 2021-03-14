@@ -7,18 +7,6 @@ Service worker is added using webpack.
 
 ## Setup
 
-git remote add boilermaker https://github.com/FullstackAcademy/boilermaker.git
-git fetch boilermaker
-git merge boilermaker/master
-
-```
-once in a while, `boilermaker` may
-be updated with additional features or bug fixes, and you can easily
-get those changes from now on by entering:
-```
-
-git fetch boilermaker
-git merge boilermaker/master
 
 ```
 ### OAuth
