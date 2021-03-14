@@ -13,15 +13,15 @@ function CalendarAuth() {
     privateKey = require('../../../GOOGLE_APPLICATION_CREDENTIALS.json')
   } else {
     privateKey = process.env.GOOGLE_APPLICATION_CREDENTIALS
-    console.log('privateKey pre-corr', privateKey)
+
     // if (privateKey.private_key) {
     //}
   }
 
-  console.log(' process.env', process.env)
   let private_key = privateKey.private_key
+  console.log('private_key pre-corr', JSON.parse(private_key))
   private_key.replace(/\\n/g, '\n" + "')
-  console.log('private_key post-corr', private_key)
+  console.log('private_key post-corr', JSON.parse(private_key))
 
   let jwtClient = new google.auth.JWT(
     privateKey.client_email,
