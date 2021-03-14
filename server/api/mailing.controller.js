@@ -5,7 +5,7 @@ const mailingController = express.Router()
 /**
  * POST/ User subscribe to App
  */
-mailingController.post('/', (req, res, next) => {
+mailingController.post('/', isAdminUser, (req, res, next) => {
   try {
     //req.query should be an object with {email,template}
     //email need to also trigger tracker in the database.
