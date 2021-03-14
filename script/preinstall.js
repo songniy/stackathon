@@ -7,7 +7,7 @@ if (!process.env.TAVIS_OS_NAME) {
   }
   fs.writeFile(
     '../GOOGLE_APPLICATION_CREDENTIALS.json',
-    googleAuth,
+    JSON.stringify(googleAuth),
     (err) => {}
   )
 }
