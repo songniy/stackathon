@@ -14,6 +14,7 @@
     "heroku-token": "script/encrypt-heroku-auth-token.js",
     "lint": "eslint ./ --ignore-path .gitignore",
     "lint-fix": "npm run lint -- --fix",
+    "preinstall": "node ./script/preinstall.js",
     "prettify": "prettier --write \"**/*.{js,jsx,json,css,scss,md}\"",
     "seed": "node script/seed.js",
     "start": "node server",

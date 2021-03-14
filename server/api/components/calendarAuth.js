@@ -1,13 +1,13 @@
 const express = require('express')
 const {google} = require('googleapis')
-
+const privateKey = require('../../../google-credentials-heroku.json')
 let privateKey_Private_Key = process.env.PRIVATEKEY_PRIVATE_KEY
 
-const privateKey = {
-  client_email: process.env.PRIVATEKEY_CLIENT_EMAIL,
-  private_key: privateKey_Private_Key
-}
-//configure jwt client
+// const privateKey = {
+//   client_email: process.env.PRIVATEKEY_CLIENT_EMAIL,
+//   private_key: privateKey_Private_Key,
+// }
+// //configure jwt client
 
 function CalendarAuth() {
   if (process.env.PGHOST === 'localhost') {
