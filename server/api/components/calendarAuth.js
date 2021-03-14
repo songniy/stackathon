@@ -5,7 +5,7 @@ if (process.env.PGHOST === 'localhost') {
   privateKey = require('../../../GOOGLE_APPLICATION_CREDENTIALS.json')
 } else {
   privateKey = process.env.GOOGLE_APPLICATION_CREDENTIALS
-  if (!privateKey) {
+  if (privateKey) {
     privateKey.replace(/\\n/g, '\n')
   }
 }
