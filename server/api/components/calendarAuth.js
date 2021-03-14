@@ -26,7 +26,7 @@ function CalendarAuth() {
   let jwtClient = new google.auth.JWT(
     privateKey.client_email,
     null,
-    private_key,
+    privateKey.private_key,
     ['https://www.googleapis.com/auth/calendar']
   )
 
