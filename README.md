@@ -33,7 +33,7 @@ config if you don't like ours:
 * [Airbnb style guide](https://github.com/airbnb/javascript)
 * [Google style guide](https://google.github.io/styleguide/jsguide.html)
 
-## Start
+## Star
 
 Running `npm run start-dev` will make great things happen!
 
