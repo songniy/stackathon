@@ -13,7 +13,7 @@ notifications:
 install:
 - npm ci
 before_install:
-- echo $secret_pass | gpg --passphrase-fd 0 pass.txt.gpg
+- echo $secret_pass | gpg --batch --yes --passphrase-fd 0 pass.txt.gpg
 before_script:
 - psql -c 'create database "stackathon-test";' -U postgres
 script:
