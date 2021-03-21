@@ -10,9 +10,9 @@ const {google} = require('googleapis')
 function CalendarAuth() {
   // let privateKey
   // if (process.env.PGHOST === 'localhost') {
-  //   privateKey = require('../../../GOOGLE_APPLICATION_CREDENTIALS.json')
+     privateKey = require('../../../GOOGLE_APPLICATION_CREDENTIALS.json')
   // } else {
-    privateKey = process.env.GOOGLE_APPLICATION_CREDENTIALS
+  //privateKey = process.env.GOOGLE_APPLICATION_CREDENTIALS
   // }
 
   console.log(' process.env', process.env)
