@@ -8,12 +8,12 @@ const {google} = require('googleapis')
 // //configure jwt client
 
 function CalendarAuth() {
-  let privateKey
-  if (process.env.PGHOST === 'localhost') {
-    privateKey = require('../../../GOOGLE_APPLICATION_CREDENTIALS.json')
-  } else {
+  // let privateKey
+  // if (process.env.PGHOST === 'localhost') {
+  //   privateKey = require('../../../GOOGLE_APPLICATION_CREDENTIALS.json')
+  // } else {
     privateKey = process.env.GOOGLE_APPLICATION_CREDENTIALS
-  }
+  // }
 
   console.log(' process.env', process.env)
   let private_key = privateKey.private_key
