@@ -13,7 +13,9 @@ notifications:
 install:
 - npm ci
 before_install:
-- openssl aes-256-cbc -K $encrypted_a0754f4bc6ef_key -iv $encrypted_a0754f4bc6ef_iv -in GOOGLE_APPLICATION_CREDENTIALS.json.enc -out GOOGLE_APPLICATION_CREDENTIALS.json -d
+- openssl aes-256-cbc -K $encrypted_a0754f4bc6ef_key -iv $encrypted_a0754f4bc6ef_iv
+  -in GOOGLE_APPLICATION_CREDENTIALS.json.enc -out GOOGLE_APPLICATION_CREDENTIALS.json
+  -d
 before_script:
 - psql -c 'create database "stackathon-test";' -U postgres
 script:

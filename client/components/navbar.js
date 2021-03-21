@@ -8,7 +8,7 @@ import '@pwabuilder/pwainstall'
 
 const Navbar = ({handleClick, isLoggedIn}) => (
   <div>
-    <h1>Rescue Rangers</h1>
+    <h1>Rescue Rangers-travis-testing branch</h1>
     <nav>
       {isLoggedIn ? (
         <div>
