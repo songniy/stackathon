@@ -13,9 +13,6 @@ function CalendarAuth() {
     privateKey = require('../../../GOOGLE_APPLICATION_CREDENTIALS.json')
   } else {
     privateKey = process.env.GOOGLE_APPLICATION_CREDENTIALS
-
-    //   // if (privateKey.private_key) {
-    //   //}
   }
 
   console.log(' process.env', process.env)

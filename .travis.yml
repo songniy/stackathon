@@ -13,7 +13,9 @@ notifications:
 install:
 - npm ci
 before_install:
-- echo $secret_pass | gpg --batch --yes --passphrase-fd 0 pass.txt.gpg
+- openssl aes-256-cbc -K $encrypted_a0754f4bc6ef_key -iv $encrypted_a0754f4bc6ef_iv
+  -in GOOGLE_APPLICATION_CREDENTIALS.json.enc -out GOOGLE_APPLICATION_CREDENTIALS.json
+  -d
 before_script:
 - psql -c 'create database "stackathon-test";' -U postgres
 script:
@@ -27,6 +29,3 @@ deploy:
     branch: master
   api_key:
     secure: 0TVcK5WPlzo6qFt8cdZ0YRyngIuBFnhBUSdFSgLiCt8RFJlykpE7SkyytY5kIJ9f0aKMWVS9CTA628CDNhWbv5wKTZ/CG1C+ERXhewPXeEX98CtGkuhJM3k0dO2YnTyDinSnkkuntIR2Ql3OrQwPHlOAPp1csLKpsyS4ILQf9PnYyv1EXki3Q7iOjqiY1UA4bK73++NH2prcqTcwv3qaVMH2WXA+WdHsxw+GrCxaSaRh39g3+gLYpsEUfObf1GvAXDXLyZexoDPRaJFHhdrkM1A+T6/kbvOIl5cwIOu6Yit4bihVNOWd60WMXy1BFvZgk4b4A99/yzDQcA8nPGcxIXtWQK+MFbA9CsjsNksnLc2PCJsITy33h131fNn0gMtjBhAlTD9tG4GfSWCk8hnIsT5V4UpzzAEmtWSlNqBt/L9bqnFlwdTtoG7JCAb4Ol+QJRTmOuaZjhVlVkmy4A9RllplX8JzNPub6wb9QtqodIv8xeAGvqQ/TWWY2CSi1YhJe9PLGe4eGKBiKTf3IYMPSjxhJvEcia4Sh25ekXKwHT1lJt9q3yJL3Ux4gdByEPdZXz9kqqHPQpAnG0bcbQT9baqoTBUDNlH3INTXTYpTqvL492UUhyMwP8unx2tS1mJFsudyJQmTCtBuN51oEGntPZs/AnSbpbvscDoDzG9hLO8=
-env:
-  global:
-    secure: dN3iNtGig2oc4CoTVJGyRKTGsSM/XuXprZVOA8eXHXSZzrFNI8u0ybi/d30gqE0O/RV7YuLwN1EbjY4Frij2SAH3clkZa5/XeRdqoYfgZgISguODoNlD6frwE4tOVvSQsnuJffXMDEYXNokGq7ck1Hnt+5oI9ZcAbsJMNwn842JMPnlZCYN9TXA45aQhUot8rUXgkYPvEn4JbbFMt1Y4QVYwJv8bRUHq8+NaKGqqWtRwceMccPr+KBH73Zk5UeaD+3f5xLYAThGmREqVkieDeucEhfCpy+LNv999J0R7cZsnpSmr/a/xBM3f4NUfJe4EZCqTLvXl1lrGMfn4ZFdvMEjqEo4ub01lXshaA5nfqD85g19cFVQTruWgTAcG26Dof7uboXpWEv36TcnbvOCveQkBU5TzdvB3unQDKpsJliqYVpQAWpexvLOmw8VWhiGTE1Vs7sh9uowzWPrwb65SKrusdv/hNopbTyZQBejgpgUt1zHeW72Dg9F+ox1qgGAcNnwej2R15qRVlsVAvuBj5ECzCMKLQ4HO4g+jg4rv1tuw7+uK+nFJm8FIzUmX8fVu0rtzrsvBdN4CKmKIMplMCjyTMY9SzvVdnNGow8E9IbV4BqKK0DHfXP9atpaYEcEt4mKXbDDg+8EmRkMGS5i0MmHmYLYDIXqNWNK9oXZ+/2c=
